@@ -99,3 +99,4 @@ The coursework relies strictly on standard CRAN packages taught by Prof. Nihan:
   - Question 2: $\sim 3$ to 3.5 pages.
   - Question 3: $\sim 3$ to 3.5 pages.
   - Total document stays strictly $\le 12$ pages.
+

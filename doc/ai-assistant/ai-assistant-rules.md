@@ -43,3 +43,4 @@ This document defines the permanent operational, behavioral, and communication r
 > 2. **Clarity Over Complexity**: Use simple, direct, and well-structured sentences. Avoid overly dense academic vocabulary or fancy words when plain words communicate the exact same idea.
 > 3. **Keep Proper Names & Technical Terms Intact**: Always keep official names, statistical test names, model terms, and clinical labels accurate (for example: ANOVA, Tukey's HSD, Bonferroni correction, Fisher's LSD, Shapiro-Wilk test, Levene's test, Breusch-Pagan test, Durbin-Watson test, Ordinary Least Squares, VIF, RMSE, AIC, BIC, systolic, diastolic, body fat percentage, grip force).
 > 4. **Practical Explanations**: When presenting test results or numbers, explain what they mean in real-world physical and clinical terms, not just raw mathematical values.
+
