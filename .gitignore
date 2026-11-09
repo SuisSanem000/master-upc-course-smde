@@ -1,0 +1,23 @@
+# System files
+.DS_Store
+Thumbs.db
+
+# Heavy application installers and large archives (over 3.6 GB)
+resources/apps/
+*.dmg
+*.zip
+*.rar
+*.msi
+*.exe
+*.tar.gz
+
+# LaTeX build files
+*.aux
+*.bcf
+*.log
+*.nav
+*.out
+*.run.xml
+*.snm
+*.toc
+*.synctex.gz

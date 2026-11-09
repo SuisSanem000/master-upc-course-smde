@@ -1,0 +1,102 @@
+% ============================================================
+% 1. FIRST QUESTION
+% ============================================================
+\section{Visualisation, Chi-Square and t-Test}\label{sec:q1}
+
+% ------------------------------------------------------------
+% a)
+% ------------------------------------------------------------
+\subsection{Data Import and Variable Types}\label{sec:q1a}
+
+\task{Import the data set to R assigning the type of each variable correctly.}
+
+We imported the data set \texttt{bodyPerformance.csv} and renamed its columns to short R names without spaces or symbols (e.g.\ \texttt{body fat\_\%} becomes \texttt{body\_fat\_pct}).
+
+Then we gave each variable the type that matches its measurement scale:
+
+\begin{itemize}
+  \item \textbf{Nominal categorical:} \texttt{gender} is a factor, and we labeled its codes \texttt{F} and \texttt{M} as \texttt{Female} and \texttt{Male} respectively.
+  \item \textbf{Ordinal categorical:} \texttt{class} is an ordered factor with the levels $D < C < B < A$, from poor to excellent performance.
+  \item \textbf{Numerical:} the other ten variables (\texttt{age}, \texttt{height\_cm}, \texttt{weight\_kg}, \texttt{body\_fat\_pct}, \texttt{diastolic}, \texttt{systolic}, \texttt{grip\_force}, \texttt{sit\_bend\_cm}, \texttt{sit\_ups} and \texttt{broad\_jump\_cm}) are numeric.
+    \texttt{age} could be stored as an integer, but we kept it numeric for simplicity.
+\end{itemize}
+
+The result has 13,393 observations of 12 variables with no missing values (R output, Appendix~\ref{app:code}).
+The name, type and levels of each variable are listed in \autoref{tab:q1a-variables}.
+
+% ------------------------------------------------------------
+% b)
+% ------------------------------------------------------------
+\subsection{Descriptive Statistics}\label{sec:q1b}
+
+\task{Summarize the numerical variables and analyze their distributions.}
+
+\paragraph{Outliers.} \autoref{tab:q1b-summary} summarizes the ten numerical variables of the original data set, and their boxplots (\autoref{fig:q1b-boxplots}) show values beyond $1.5 \times \mathrm{IQR}$ from the quartiles in every variable except \texttt{age} and \texttt{sit\_ups} (\autoref{tab:q1b-outliers}).
+Most of these outliers are possible values, so instead of removing all of them we compared the extreme values of \autoref{tab:q1b-summary} with the adult health reference ranges of \autoref{tab:q1b-reference}, and removed only the observations with impossible values (\autoref{tab:q1b-removed}):
+
+\begin{itemize}
+  \item \textbf{Blood pressure:} the readings with \texttt{systolic} $< 70$ or \texttt{diastolic} $< 40$\,mmHg (e.g.\ 0/0, 14/67 and 145/6), far below the hypotension limit of 90/60\,mmHg \citep{nhs_hypotension}, and those with \texttt{systolic} $\leq$ \texttt{diastolic} (e.g.\ 104/156.2 and 95/99), since the systolic pressure is by definition the higher of the two.
+  \item \textbf{Body fat:} the values below the essential fat, which is 2--5\% for men and 10--13\% for women (3.5, 9.4 and 9.7\% in women), and the maximum of 78.4\%, far above the obesity limit of 25\% for men and 32\% for women \citep{ace_bodyfat}.
+  \item \textbf{Performance tests:} the zeros of \texttt{grip\_force} and \texttt{broad\_jump\_cm}, which mean that the test was not done rather than a measurement, and the two maxima of \texttt{sit\_bend\_cm} (185 and 213\,cm), far from the rest of its values (at most 42\,cm).
+\end{itemize}
+
+In total we removed 28 observations (0.2\%) and saved the other 13,365 as \texttt{bodyPerformance\_clean.csv}, the data set used in the rest of the assignment (Sections~\ref{sec:q1c}--\ref{sec:q1g} and \ref{sec:q2}).
+We kept the other outliers because they are possible values: the high blood pressures correspond to stage~2 hypertension or a hypertensive crisis (up to 201\,mmHg) \citep{whelton2018}, the 3\% body fat of some men is within their essential fat \citep{ace_bodyfat}, the shortest and lightest individuals have a BMI of severe thinness ($< 16$) \citep{who1995}, which is rare but possible, and the 125 zeros of \texttt{sit\_ups} correspond to individuals who could not do any sit-up.
+
+\paragraph{Distribution and normality.}
+\xfcomment{TODO: describe the shape of each variable with the histograms of the cleaned data (\autoref{fig:q1b-histograms}) and compare it with the mean and median of \autoref{tab:q1b-summary}.}
+\xfcomment{TODO: check whether the two peaks of \texttt{grip\_force} (around 25 and 43) correspond to the two values of \texttt{gender} (Section~\ref{sec:q1g}).}
+\xfcomment{TODO: comment on the Q-Q plots of the cleaned data (\autoref{fig:q1b-qqplots}): which variables follow the line and which deviate in the tails.}
+\xfcomment{TODO: report the Shapiro-Wilk test on a random sample of 5,000 cleaned observations (\autoref{tab:q1b-shapiro}) and explain why, with this sample size, it rejects normality even for the variables that look normal in \autoref{fig:q1b-histograms}.}
+
+% ------------------------------------------------------------
+% c)
+% ------------------------------------------------------------
+\subsection{Blood Pressure by Gender}\label{sec:q1c}
+
+\task{Consider the variables of diastolic and systolic blood pressure.
+Eliminate the zero values and check their distributions for the gender groups using proper graph(s).
+Interpret your findings.}
+
+\xfcomment{Discuss the differences in the distributions of \texttt{diastolic} and \texttt{systolic} between the two levels of \texttt{gender}, based on your graphs.}
+
+% ------------------------------------------------------------
+% d)
+% ------------------------------------------------------------
+\subsection{Confidence Intervals for Systolic Blood Pressure}\label{sec:q1d}
+
+\task{Construct 95\% confidence intervals for the mean systolic blood pressure of two gender groups and interpret them.}
+
+\xfcomment{State the resulting intervals and explain their practical meaning in context.}
+
+% ------------------------------------------------------------
+% e)
+% ------------------------------------------------------------
+\subsection{Age Groups}\label{sec:q1e}
+
+\task{Categorize the variable age into four categories cutting from the values 30, 40 and 50 and save it as a new variable into your data frame.}
+
+We saved the four age groups as the new variable \texttt{age\_cat}; their frequencies are in \autoref{tab:q1e-age-groups} and \autoref{fig:q1e-age-groups}.
+
+\xfcomment{TODO: comment on the size of each level of \texttt{age\_cat} (e.g.\ the largest and smallest groups).}
+
+% ------------------------------------------------------------
+% f)
+% ------------------------------------------------------------
+\subsection{Association of Age Groups with Class and Gender}\label{sec:q1f}
+
+\task{Analyze the association first between age groups and class and then between age groups and gender by using proper statistical method.}
+
+The contingency tables are in \autoref{tab:q1f-age-class} and \autoref{tab:q1f-age-gender}, the chi-square tests of independence in \autoref{tab:q1f-chisq} and the proportions of each level of \texttt{class} and \texttt{gender} within each level of \texttt{age\_cat} in \autoref{fig:q1f-proportions}.
+
+\xfcomment{TODO: state the hypotheses, check the assumption (expected counts $\geq 5$), report $\chi^2$, df and p-value, and conclude on the independence of \texttt{age\_cat} with \texttt{class} and with \texttt{gender}.}
+
+% ------------------------------------------------------------
+% g)
+% ------------------------------------------------------------
+\subsection{Physical Performance by Gender}\label{sec:q1g}
+
+\task{Test whether physical performance test results of the individuals are affected from the gender.
+Check the assumptions and visualize the relationship between these two characteristics.}
+
+\xfcomment{Summarize the assumption checks and discuss whether \texttt{grip\_force}, \texttt{sit\_bend\_cm}, \texttt{sit\_ups} and \texttt{broad\_jump\_cm} differ significantly by \texttt{gender}.}

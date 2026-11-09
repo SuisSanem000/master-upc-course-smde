@@ -1,0 +1,8 @@
+# Latex
+**/_build/
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+Rplots.pdf

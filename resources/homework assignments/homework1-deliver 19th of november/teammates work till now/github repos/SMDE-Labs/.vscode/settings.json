@@ -1,0 +1,55 @@
+{
+    // Hide the files of the UPC LaTeX template that the report
+    // (UPC_Template/ociamthesismain.tex) does not use
+    "files.exclude": {
+        "UPC_Template/Beamer": true,
+        "UPC_Template/Cover": true,
+        "UPC_Template/Figure": true,
+        "UPC_Template/Table": true,
+        "UPC_Template/cornell.cls": true,
+        "UPC_Template/hangcaption.sty": true,
+        "UPC_Template/ltxdoc.cfg": true,
+        "UPC_Template/*.mf": true,
+        "UPC_Template/oxlogo.png": true,
+        "UPC_Template/upclogo.pdf": true,
+        "UPC_Template/upc-logo-black.pdf": true,
+        "UPC_Template/ociamthesismain.pdf": true
+    },
+
+    // LaTeX Workshop: build into UPC_Template/_build (git-ignored)
+    "latex-workshop.latex.outDir": "%DIR%/_build",
+
+    // LTeX+ (grammar and spell checker of the LaTeX report and the Markdown files)
+    // American English, as in the statements of the assignment
+    "ltex.language": "en-US",
+    "ltex.enabled": ["latex", "markdown"],
+
+    // How LTeX reads our LaTeX macros
+    "ltex.latex.commands": {
+        "\\texttt{}": "dummy",              // R variable names: read as one word, not spell-checked
+        "\\autoref{}": "dummy",             // "Table 2", "Figure 1"
+        "\\csvtable{}{}{}": "ignore",       // tables from the R scripts
+        "\\csvtable[]{}{}{}": "ignore",
+        "\\titlelogo{}": "ignore",          // title page fields with images or Catalan names
+        "\\titleseal{}": "ignore",
+        "\\faculty{}": "ignore",
+        "\\university{}": "ignore"
+    },
+
+    // Words of the project that are not in the English dictionary
+    "ltex.dictionary": {
+        "en-US": [
+            "SMDE", "MIRI", "UPC", "FIB", "BarcelonaTech", "Modelling", "Visualisation",
+            "boxplot", "boxplots", "interquartile", "bimodal", "hypotension",
+            "Shapiro", "Wilk", "Kaggle", "Typst", "Rscript", "datatool"
+        ]
+    },
+
+    // Words added and rules disabled with the quick fixes are saved here (shared in the repo)
+    "ltex.configurationTarget": {
+        "dictionary": "workspace",
+        "disabledRules": "workspace",
+        "hiddenFalsePositives": "workspace"
+    },
+    "r.lsp.promptToInstall": false
+}

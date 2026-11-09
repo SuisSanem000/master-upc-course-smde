@@ -1,0 +1,3 @@
+"Test","Chi_squared","df","p_value","Min_expected"
+"Age group x class",124.79,9,"< 1e-16",464.8
+"Age group x gender",196.07,3,"< 1e-16",683.8
