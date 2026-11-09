@@ -89,3 +89,4 @@ Used to test whether two categorical variables (such as age group and performanc
   3. At least 80% of cells must have an expected count $E_{ij} \ge 5$.
   - Checked in R with `chisq.test(table)$expected`.
 - **Decision Rule**: If $p \le 0.05$, reject $H_0$ and conclude that the two categories are statistically associated.
+

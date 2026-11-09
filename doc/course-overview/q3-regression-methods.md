@@ -177,3 +177,4 @@ cat("Test RMSE:", round(test_rmse, 2), "cm\n")
 3. **Q3(c)**: Add categorical factor `age_cat` as dummy variables and interpret the baseline intercept and age penalties.
 4. **Q3(d)**: Compare models using Partial F-tests (`anova`), Adjusted $R^2$, AIC, and BIC to select the optimal model.
 5. **Q3(e)**: Perform 70/30 train/test split, predict on the test set, calculate RMSE, and verify model generalizability.
+

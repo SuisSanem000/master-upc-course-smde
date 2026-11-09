@@ -229,3 +229,4 @@ chi_gender <- chisq.test(tab_gender)
   - Test variance equality with `var.test()` for each variable first to select between Student's t-test and Welch's t-test.
   - Interpret which gender performs better on each test.
 - **Ready Proposal**: We have prepared the complete R code and empirical numbers for this missing part in [`q1g-proposed-solution.md`](file:///Users/siminshoeibizadeh/My%20Drive/uni/sem1/uni%20projects/sem1/SMDE/doc/homeworks-overview/question-1/q1g-proposed-solution.md).
+

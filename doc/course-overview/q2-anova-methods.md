@@ -158,3 +158,4 @@ interaction.plot(body$age_cat, body$class, body$broad_jump_cm,
 1. **Q2(a)**: Group numerical responses by factor levels, compute summary tables (Mean, SD, Median, IQR), and draw multi-panel boxplots.
 2. **Q2(b)**: Fit One-Way ANOVA (`aov`), check residual plots and Levene's test, and run the 3 post-hoc tests (Tukey HSD, Bonferroni, LSD/Scheffé).
 3. **Q2(c)**: Fit Two-Way ANOVA with interaction (`*`), test if the interaction term is significant, and draw the interaction plot to visually confirm parallelism.
+

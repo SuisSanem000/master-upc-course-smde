@@ -133,3 +133,4 @@ When discussing Q1 in tonight's meeting:
 1. **Show you read the script**: *"I went through `Q1.R` from start to finish. Everything up to Part f looks very clean and well organized."*
 2. **Raise the missing part politely**: *"I noticed our script currently ends at line 442 right after the chi-square tests in Part f. Subquestion (g) is worth 2.5 points, so we definitely need to include it."*
 3. **Offer the solution**: *"I already tested the code and ran the Welch t-tests for the four physical variables on our clean dataset. Males dominate in grip strength, jump, and sit-ups, but females are significantly more flexible in the sit-and-bend test ($18.85$ cm vs. $13.05$ cm). I can add the code block and generate the tables for us."*
+
