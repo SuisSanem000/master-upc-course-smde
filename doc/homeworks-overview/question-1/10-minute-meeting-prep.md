@@ -100,3 +100,4 @@ The objectives are:
 | **Sit & Bend (Q1.g)** | **$18.9$ cm** | $13.1$ cm | **$-5.8$ cm (F > M)** | Welch t-test | **Yes (Females Win)** |
 | **Sit-ups (Q1.g)** | $30.9$ counts | $44.9$ counts | $+14.0$ counts (M > F) | Welch t-test | Yes ($p < 10^{-300}$) |
 | **Broad Jump (Q1.g)**| $153.5$ cm | $211.6$ cm | $+58.1$ cm (M > F) | Student t-test | Yes ($p < 10^{-300}$) |
+
