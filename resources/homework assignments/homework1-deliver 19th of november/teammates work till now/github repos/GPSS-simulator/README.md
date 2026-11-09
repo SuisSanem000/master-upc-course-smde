@@ -1,2 +1,0 @@
-# GPSS Simulation Engine
-
