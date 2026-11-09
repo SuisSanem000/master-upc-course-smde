@@ -43,3 +43,4 @@ Use this 1-page cheat sheet during your online meeting at 8:00 PM. It gives you 
 
 2. **On Scheduling**:
    > *"Our deadline is Thursday, November 19 at 23:59. If we finish Question 1 tonight, should our goal be to have Question 2 and Question 3 initial drafts ready by Friday, so we have the weekend to combine and polish the LaTeX report?"*
+
