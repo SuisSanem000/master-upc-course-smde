@@ -20,9 +20,9 @@ This document is the master project tracker, status log, and roadmap for the AI 
 
 ---
 
-## 2. Decoupled Rule Framework
+## 2. Decoupled Rule & Knowledge Framework
 
-To ensure clean separation between general agent behavior and homework domain rules, all project guidelines are decoupled into dedicated reference documents in this folder:
+To ensure clean separation between general agent behavior, statistical theory, and homework domain rules, all project guidelines and knowledge bases are decoupled into dedicated reference documents:
 
 1. **General AI Assistant Rules**: [`ai-assistant-rules.md`](ai-assistant-rules.md)
    - Safety constraints: `resources/` is strictly read-only.
@@ -36,6 +36,17 @@ To ensure clean separation between general agent behavior and homework domain ru
    - R scripting architecture (`save_table`, `save_figure`, `sink`).
    - Required statistical libraries (`car`, `lmtest`, `agricolae`).
    - LaTeX report macros and styling.
+3. **Decoupled Statistical Theory Guides**:
+   - Question 1 Theory: [`../course-overview/q1-statistical-methods.md`](../course-overview/q1-statistical-methods.md) (EDA, outlier rules, CLT, CIs, F-test, Student & Welch t-tests, Chi-square).
+   - Question 2 Theory: [`../course-overview/q2-anova-methods.md`](../course-overview/q2-anova-methods.md) (One-Way ANOVA, assumptions, 3 post-hoc tests, Two-Way interaction).
+   - Question 3 Theory: [`../course-overview/q3-regression-methods.md`](../course-overview/q3-regression-methods.md) (Simple & Multiple Linear Regression, VIF, dummy variables, model selection, 70/30 train/test validation).
+4. **Question-by-Question Homework Guides**:
+   - Question 1 Master Guide: [`../homeworks-overview/question-1/overview.md`](../homeworks-overview/question-1/overview.md)
+   - Question 1 Code Walkthrough: [`../homeworks-overview/question-1/q1-code-walkthrough.md`](../homeworks-overview/question-1/q1-code-walkthrough.md)
+   - Question 1(g) Solution & Snippet: [`../homeworks-overview/question-1/q1g-proposed-solution.md`](../homeworks-overview/question-1/q1g-proposed-solution.md)
+   - Question 2 Master Guide: [`../homeworks-overview/question-2/overview.md`](../homeworks-overview/question-2/overview.md)
+   - Question 3 Master Guide: [`../homeworks-overview/question-3/overview.md`](../homeworks-overview/question-3/overview.md)
+   - Meeting Cheat Sheet (Nov 9): [`../homeworks-overview/meeting-cheat-sheet-2026-11-09.md`](../homeworks-overview/meeting-cheat-sheet-2026-11-09.md)
 
 ---
 
