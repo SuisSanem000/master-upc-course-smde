@@ -20,28 +20,22 @@ This document is the master project tracker, status log, and roadmap for the AI 
 
 ---
 
-## 2. Core Operational Constraints & Language Rules
+## 2. Decoupled Rule Framework
 
-### 2.1 Workspace and Safety Rules
-1. **Safety Constraint**: The `resources/` folder is strictly read-only. We do not modify or delete anything inside `resources/` (except removing `.git/` folders as instructed).
-2. **Implementation Status**: **Zero implementation code has been written.** The project is currently strictly in Phase 1 (Planning and Understanding). No code or workspace directories have been copied, created, or changed for Homework 1. When the user decides to start Phase 2, code will be developed in `./smde-lab/` at the root.
-3. **Documentation Boundary**: All project planning, guides, and review notes reside strictly inside the `doc/` subfolders.
-4. **Clean State**: The `.git/` directory inside `SMDE-Labs` has been permanently deleted.
+To ensure clean separation between general agent behavior and homework domain rules, all project guidelines are decoupled into dedicated reference documents in this folder:
 
-### 2.2 Local Git Repository & No-Push Policy (MANDATORY RULE)
-> [!IMPORTANT]
-> **LOCAL VERSION CONTROL ONLY — NEVER PUSH**:
-> 1. **Local Repository**: A local Git repository is initialized at the workspace root (`/Users/siminshoeibizadeh/My Drive/uni/sem1/uni projects/sem1/SMDE`).
-> 2. **Never Push**: This repository is strictly for local version tracking. It must **never** be pushed to GitHub, GitLab, or any remote server. No remote origin shall be configured or pushed to under any circumstances.
-> 3. **Commit Every Step**: The AI assistant must track each meaningful step, update markdown files when needed, and make clear, descriptive local commits.
-
-### 2.3 Language and Style Constraint (Upper B2 English)
-> [!IMPORTANT]
-> **MANDATORY RULE FOR ALL FUTURE AI ASSISTANT TASKS**:
-> - **Language Level**: English up to **Upper B2**.
-> - **Clarity**: Use clear, direct, and natural sentences. Avoid overly dense, flowery, or complicated words when simpler words express the same meaning.
-> - **Technical Terms & Proper Names**: Always keep official statistical names, test names, formulas, and clinical terms intact (for example: ANOVA, One-Way ANOVA, Two-Way ANOVA, Tukey's HSD, Bonferroni correction, Fisher's LSD, Shapiro-Wilk test, Levene's test, Breusch-Pagan test, Durbin-Watson test, Ordinary Least Squares, VIF, RMSE, AIC, BIC, systolic, diastolic, etc.).
-> - **Explanations**: State statistical findings, test results, and their practical real-world meaning simply and clearly.
+1. **General AI Assistant Rules**: [`ai-assistant-rules.md`](ai-assistant-rules.md)
+   - Safety constraints: `resources/` is strictly read-only.
+   - Implementation workspace: `./smde-lab/` at workspace root.
+   - Local Git tracking: strictly local commits, never push to any remote.
+   - Language and communication: clear Upper B2 English.
+2. **Homework Technical Specifications**: [`homework-technical-rules.md`](homework-technical-rules.md)
+   - Submission package and deadlines (Racó FIB, Nov 19, 23:59 CET).
+   - Strict 12-page ceiling and figure/table placement rules.
+   - Clinical data cleaning standards and threshold exclusions.
+   - R scripting architecture (`save_table`, `save_figure`, `sink`).
+   - Required statistical libraries (`car`, `lmtest`, `agricolae`).
+   - LaTeX report macros and styling.
 
 ---
 
@@ -78,59 +72,17 @@ Total Homework 1 (30.0 Points Practical Statistics)
 
 ---
 
-## 4. Technical Reference Information for Next Phases
+## 4. Technical Specifications Reference
 
-This reference summary preserves all key technical details so the AI assistant can access them immediately in future steps.
+All specific homework data rules, R scripting helper functions, required statistical packages, and LaTeX macros are fully detailed in:
+- [`homework-technical-rules.md`](homework-technical-rules.md)
 
-### 4.1 Data Rules & Cleaning
-- **Raw Data**: `bodyPerformance.csv` (13,393 rows, 12 columns).
-- **Cleaned Data**: `bodyPerformance_clean.csv` (13,365 rows, 12 columns).
-- **Exclusion Rules**:
-  1. `systolic >= 70` and `diastolic >= 40` (removes zero readings and severe hypotension).
-  2. `systolic > diastolic` (removes impossible inverted blood pressure readings).
-  3. `body_fat_pct >= 2%` for men, `body_fat_pct >= 10%` for women, and `body_fat_pct <= 60%`.
-  4. `grip_force > 0` and `broad_jump_cm > 0` (removes unperformed tests).
-  5. `sit_bend_cm <= 50` (removes typing errors: 185 cm and 213 cm).
-- **Age Categories (`age_cat`)**:
-  ```r
-  body$age_cat <- cut(body$age, breaks = c(-Inf, 30, 40, 50, Inf),
-                      labels = c("<30", "30-39", "40-49", "50+"), right = FALSE)
-  ```
-
-### 4.2 Script Execution Pattern
-Scripts should run smoothly from both the repository root and the `R/` directory:
-```r
-if (!file.exists("bodyPerformance.csv") && file.exists("../bodyPerformance.csv")) setwd("..")
-log_dir <- "R/logs"
-tab_dir <- c("report/tables", "UPC_Template/tables")
-fig_dir <- c("report/figures", "UPC_Template/figures")
-for (d in c(log_dir, tab_dir, fig_dir)) dir.create(d, recursive = TRUE, showWarnings = FALSE)
-```
-
-### 4.3 Required R Packages & Key Functions
-- **ANOVA & Diagnostics**:
-  - `aov(y ~ group, data = df)`
-  - `car::leveneTest(y ~ group, data = df)`
-  - `lmtest::bptest(model)`
-  - `lmtest::dwtest(model, alternative = "two.sided")`
-  - `shapiro.test(residuals(model))` (sample 5,000 if $n > 5,000$)
-- **Three Required Post-Hoc Tests**:
-  - 1. Tukey's HSD: `TukeyHSD(aov_model)`
-  - 2. Bonferroni: `pairwise.t.test(df$y, df$group, p.adj = "bonf")`
-  - 3. Fisher's LSD: `agricolae::LSD.test(aov_model, "group")`
-- **Regression & Validation**:
-  - `lm(broad_jump_cm ~ predictors, data = train_data)`
-  - `car::vif(model)`
-  - `anova(model_small, model_large)` (Partial F-test)
-  - `AIC(model)`, `BIC(model)`
-  - `RMSE = sqrt(mean((test_data$broad_jump_cm - predict(model, test_data))^2))`
-
-### 4.4 LaTeX Macros & Formatting (`UPC_Template`)
-- Section files: `sections/q1.tex`, `sections/q2.tex`, `sections/q3.tex`.
-- Subquestion box: `\task{Question statement}`
-- Table inclusion: `\csvtable{filename_without_csv}{Caption}{tab:label}`
-- Referencing: `\autoref{tab:...}`, `\autoref{fig:...}`, `\autoref{sec:...}`
-- Page layout target: Approximately 3 pages per question to ensure Title Page + Table of Contents + Q1 + Q2 + Q3 $\le 12$ pages total.
+Key technical highlights at a glance:
+- **Cleaned Data**: `bodyPerformance_clean.csv` (13,365 rows; 28 medical outliers removed).
+- **Age Bins**: `<30`, `30-39`, `40-49`, `50+`.
+- **Dual-Export Architecture**: Simultaneous export to `report/` and `UPC_Template/` via `save_table()` and `save_figure()`.
+- **Required Packages**: `car`, `lmtest`, `agricolae`.
+- **Page Ceiling**: Strict 12-page maximum for the compiled PDF.
 
 ---
 
