@@ -1,6 +1,6 @@
 # Statistical Modelling & Design of Experiments (SMDE) — Course Context & Methods
 
-This document explains the statistical theory, formulas, hypothesis tests, assumption checks, and decision rules needed to solve **Homework Assignment 1 (Questions 1, 2, and 3)**. Other course topics (such as discrete simulation, GPSS, random number generators, general exam theory, and Principal Component Analysis) are left out so this document focuses only on what is needed for this homework.
+This document explains the statistical theory, formulas, hypothesis tests, assumption checks, and decision rules needed to solve **Homework Assignment 1 (Questions 1, 2, and 3)**. Other course topics (such as discrete simulation, general exam theory, and Principal Component Analysis) are left out so this document focuses only on what is needed for this homework.
 
 ---
 

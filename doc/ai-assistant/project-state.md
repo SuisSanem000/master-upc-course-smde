@@ -26,22 +26,16 @@ This document is the master project tracker, status log, and roadmap for the AI 
 1. **Safety Constraint**: The `resources/` folder is strictly read-only. We do not modify or delete anything inside `resources/` (except removing `.git/` folders as instructed).
 2. **Implementation Status**: **Zero implementation code has been written.** The project is currently strictly in Phase 1 (Planning and Understanding). No code or workspace directories have been copied, created, or changed for Homework 1. When the user decides to start Phase 2, code will be developed in `./smde-lab/` at the root.
 3. **Documentation Boundary**: All project planning, guides, and review notes reside strictly inside the `doc/` subfolders.
-4. **Clean State**: The `.git/` directories inside both `SMDE-Labs` and `GPSS-simulator` have been permanently deleted.
+4. **Clean State**: The `.git/` directory inside `SMDE-Labs` has been permanently deleted.
 
-### 2.2 Other Repositories in Workspace: `GPSS-simulator`
-- **Location**: `resources/homework assignments/homework1-deliver 19th of november/teammates work till now/github repos/GPSS-simulator/`
-- **Topic**: Discrete Simulation Practical (Prof. Pau Fonseca i Casas: Pseudo-Random Number Generators [PRNG], Chi-square uniformity tests, spectral analysis, Drunkard's Walk, and the aGPSS simulation engine).
-- **Relevance to Homework 1**: **Not related to Homework 1.** Homework 1 is strictly the Statistics module (Prof. Nihan Acar-Denizli: Questions 1, 2, and 3 using `bodyPerformance.csv`).
-- **Action**: Ignored for Homework 1. Its `.git/` folder was removed. It is preserved for future simulation practical work.
-
-### 2.3 Local Git Repository & No-Push Policy (MANDATORY RULE)
+### 2.2 Local Git Repository & No-Push Policy (MANDATORY RULE)
 > [!IMPORTANT]
 > **LOCAL VERSION CONTROL ONLY — NEVER PUSH**:
 > 1. **Local Repository**: A local Git repository is initialized at the workspace root (`/Users/siminshoeibizadeh/My Drive/uni/sem1/uni projects/sem1/SMDE`).
 > 2. **Never Push**: This repository is strictly for local version tracking. It must **never** be pushed to GitHub, GitLab, or any remote server. No remote origin shall be configured or pushed to under any circumstances.
 > 3. **Commit Every Step**: The AI assistant must track each meaningful step, update markdown files when needed, and make clear, descriptive local commits.
 
-### 2.4 Language and Style Constraint (Upper B2 English)
+### 2.3 Language and Style Constraint (Upper B2 English)
 > [!IMPORTANT]
 > **MANDATORY RULE FOR ALL FUTURE AI ASSISTANT TASKS**:
 > - **Language Level**: English up to **Upper B2**.
