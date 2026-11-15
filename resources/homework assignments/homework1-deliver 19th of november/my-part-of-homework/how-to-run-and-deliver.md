@@ -16,7 +16,7 @@ This guide summarizes all setup, running, LaTeX compilation, and Git delivery ru
      ```sh
      export PATH="/Library/TeX/texbin:$PATH"
      sudo tlmgr update --self
-     sudo tlmgr install latexmk datatool csvsimple xstring enumitem xurl substr tracklang palatino helvetic courier
+     sudo tlmgr install latexmk datatool csvsimple xstring enumitem xurl substr tracklang palatino helvetic courier fpl mathpazo
      ```
    - Restart Antigravity / VS Code (`Cmd+Q`, then reopen) so it picks up `/Library/TeX/texbin`.
 3. **Recommended VS Code Extensions** (optional, listed in `.vscode/extensions.json`):
