@@ -22,3 +22,7 @@ resources/apps/
 *.toc
 *.synctex.gz
 
+# Teammates' external GitHub repos folder
+resources/homework assignments/homework1-deliver 19th of november/teammates work till now/github repos/
+
+

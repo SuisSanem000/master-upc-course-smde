@@ -1,8 +1,0 @@
-"Rule","Values","Rows"
-"systolic < 70 or diastolic < 40","0/0, 122/30, 122/8, 14/67, 145/6, 43.9/46.2, 77/37",7
-"systolic <= diastolic","0/0, 104/156.2, 14/67, 43.9/46.2, 95/99",5
-"body_fat_pct < essential or > 60","3.5, 78.4, 9.4, 9.7",4
-"grip_force = 0","0",3
-"broad_jump_cm = 0","0",10
-"sit_bend_cm > 50","185, 213",2
-"Any of the above","",28
