@@ -44,19 +44,23 @@ Rscript R/Q3.R
 
 ---
 
-## 3. How to Compile the LaTeX Report (`report/`)
+## 3. How to Compile the LaTeX Report (`report/_build/ociamthesismain.pdf`)
 
-After running `R/Q1.R`, `R/Q2.R`, and `R/Q3.R`:
+Make sure you have already done **Step 1** (BasicTeX + `tlmgr install ...`) and **Step 2** (running `R/Q1.R`, `R/Q2.R`, and `R/Q3.R` so `report/tables/*.csv` and `report/figures/*.png` exist):
 
-- **Option A — In VS Code (LaTeX Workshop)**:
-  Open `report/sections/q2.tex` (or `report/ociamthesismain.tex`) and save the file (`Cmd+S`). It automatically builds the PDF into `report/_build/ociamthesismain.pdf`.
+- **Option A — In Antigravity / VS Code (automatic on save)**:
+  1. Completely quit (`Cmd+Q`) and reopen Antigravity / VS Code once after installing BasicTeX packages.
+  2. Open `report/sections/q2.tex` (or `report/ociamthesismain.tex`) and press **`Cmd+S`** (Save).
+  3. It automatically builds `report/_build/ociamthesismain.pdf`.
   *(Tip from Xiang in WhatsApp: If the PDF does not compile, delete the `report/_build/` folder and save again to rebuild).*
 
-- **Option B — From the Terminal**:
+- **Option B — From the Terminal** (inside `SMDE-Labs/`):
   ```sh
+  export PATH="/Library/TeX/texbin:$PATH"
   cd report
   latexmk -pdf -outdir=_build ociamthesismain.tex
   ```
+  Your compiled PDF will be saved at `report/_build/ociamthesismain.pdf`.
 
 ---
 
