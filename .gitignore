@@ -1,6 +1,7 @@
 # System files
 .DS_Store
 Thumbs.db
+.vscode/
 
 # Heavy application installers and large archives (over 3.6 GB)
 resources/apps/
