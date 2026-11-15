@@ -10,7 +10,16 @@ This guide summarizes all setup, running, LaTeX compilation, and Git delivery ru
    ```sh
    Rscript -e 'install.packages(c("lmtest", "car", "languageserver", "jsonlite", "rlang"), repos="https://cloud.r-project.org")'
    ```
-2. **Recommended VS Code Extensions** (optional, listed in `.vscode/extensions.json`):
+2. **Install LaTeX on Mac (BasicTeX + needed packages)**:
+   - Install `BasicTeX.pkg` from `https://tug.org/mactex/morepackages.html`.
+   - Open Terminal and install `latexmk` and the extra LaTeX packages used by the report:
+     ```sh
+     export PATH="/Library/TeX/texbin:$PATH"
+     sudo tlmgr update --self
+     sudo tlmgr install latexmk datatool csvsimple xstring enumitem xurl substr tracklang
+     ```
+   - Restart Antigravity / VS Code (`Cmd+Q`, then reopen) so it picks up `/Library/TeX/texbin`.
+3. **Recommended VS Code Extensions** (optional, listed in `.vscode/extensions.json`):
    - Open the `SMDE-Labs` folder in VS Code, press `Cmd+Shift+X`, type `@recommended`, and install them (especially **LaTeX Workshop** and **LTeX+**).
 
 ---
