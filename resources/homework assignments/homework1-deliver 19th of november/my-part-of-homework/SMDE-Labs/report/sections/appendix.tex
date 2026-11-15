@@ -176,6 +176,49 @@ Broad jump   & 56.92  & 58.90 \\
 \end{table}
   
 \clearpage
+\subsection{Question 2}
+
+\csvtable[\footnotesize]{q2a_summary_age}
+  {a) Summary statistics of the four variables in each age group (\texttt{age\_cat}).}
+  {tab:q2a-summary-age}
+
+\csvtable[\footnotesize]{q2a_summary_class}
+  {a) Summary statistics of the four variables in each performance class (\texttt{class}).}
+  {tab:q2a-summary-class}
+
+\csvtable{q2b_anova}
+  {b) One-way ANOVA of the four variables by \texttt{age\_cat} and by \texttt{class} ($\mathrm{Eta\_sq} = \eta^2 = \mathrm{SSB}/\mathrm{SST}$).}
+  {tab:q2b-anova}
+
+\csvtable[\footnotesize]{q2b_assumptions}
+  {b) Assumptions of the eight one-way ANOVA models (Shapiro-Wilk on a random sample of 5,000 residuals; \texttt{Var\_ratio}: largest over smallest group variance).}
+  {tab:q2b-assumptions}
+
+\csvtable[\scriptsize]{q2b_posthoc_age}
+  {b) Pairwise post-hoc comparisons by \texttt{age\_cat} (difference of means and p-values of Tukey HSD, Bonferroni and LSD).}
+  {tab:q2b-posthoc-age}
+
+\csvtable[\scriptsize]{q2b_posthoc_class}
+  {b) Pairwise post-hoc comparisons by \texttt{class} (difference of means and p-values of Tukey HSD, Bonferroni and LSD).}
+  {tab:q2b-posthoc-class}
+
+\csvtable{q2b_posthoc_summary}
+  {b) Number of the 6 pairs of groups that differ at a 95\% confidence level ($p \leq 0.05$) according to each post-hoc test.}
+  {tab:q2b-posthoc-summary}
+
+\csvtable{q2c_anova}
+  {c) Two-way ANOVA (Type~II tests) of \texttt{sit\_ups} and \texttt{broad\_jump\_cm} by \texttt{age\_cat} and \texttt{gender}.}
+  {tab:q2c-anova}
+
+\csvtable[\footnotesize]{q2c_assumptions}
+  {c) Assumptions of the two two-way ANOVA models across the eight \texttt{age\_cat} $\times$ \texttt{gender} groups.}
+  {tab:q2c-assumptions}
+
+\csvtable[\scriptsize]{q2c_posthoc}
+  {c) Pairwise post-hoc comparisons of \texttt{age\_cat} within each level of \texttt{gender} for \texttt{sit\_ups} and \texttt{broad\_jump\_cm}.}
+  {tab:q2c-posthoc}
+
+\clearpage
 \subsection{Question 3}
 
 \csvtable{q3a_correlation}
@@ -300,6 +343,44 @@ Broad jump   & 56.92  & 58.90 \\
   \caption{Boxplots of physical performance variables by gender.}
   \label{fig:q1g-boxplots}
 \end{figure}
+\clearpage
+\subsection{Question 2}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth]{q2a_boxplots_age}
+  \caption{a) Boxplots of the four variables by age group (\texttt{age\_cat}).}
+  \label{fig:q2a-boxplots-age}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth]{q2a_boxplots_class}
+  \caption{a) Boxplots of the four variables by performance class (\texttt{class}).}
+  \label{fig:q2a-boxplots-class}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth]{q2b_qqplots}
+  \caption{b) Normal Q-Q plots of the residuals of the eight one-way ANOVA models (top: \texttt{age\_cat}, bottom: \texttt{class}).}
+  \label{fig:q2b-qqplots}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth]{q2c_interaction}
+  \caption{c) Interaction plots of the mean of \texttt{sit\_ups} (left) and \texttt{broad\_jump\_cm} (right) by \texttt{age\_cat} and \texttt{gender}.}
+  \label{fig:q2c-interaction}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth]{q2c_qqplots}
+  \caption{c) Normal Q-Q plots of the residuals of the two two-way ANOVA models.}
+  \label{fig:q2c-qqplots}
+\end{figure}
+
 \clearpage
 \subsection{Question 3}
 
