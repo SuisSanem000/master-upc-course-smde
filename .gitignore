@@ -1,29 +1,52 @@
-# System files
+# System & editor files
 .DS_Store
 Thumbs.db
 .vscode/
+*.swp
+*~
 
-# Heavy application installers and large archives (over 3.6 GB)
+# Heavy application installers, packages, and large archives
 resources/apps/
 *.dmg
+*.pkg
 *.zip
 *.rar
 *.msi
 *.exe
 *.tar.gz
+*.iso
 
-# LaTeX build files
+# R & Python temporary/cache files
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+__pycache__/
+*.pyc
+
+# LaTeX build artifacts & compiled output
+_build/
 *.aux
 *.bcf
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lof
 *.log
+*.lot
 *.nav
 *.out
 *.run.xml
 *.snm
-*.toc
 *.synctex.gz
+*.toc
+ociamthesismain.pdf
 
-# Teammates' external GitHub repos folder
+# Teammates' external GitHub repos folder (kept local only)
 resources/homework assignments/homework1-deliver 19th of november/teammates work till now/github repos/
 
 
