@@ -99,3 +99,15 @@ So for Saturday we can have the code done and analysis (no need to start redacti
 [13/11/2026, 14:02:20] Simin: ok great thanks guys
 [13/11/2026, 19:00:08] Tosia Uni Smde: just pushed my changed
 [13/11/2026, 19:00:14] Tosia Uni Smde: changes*
+------------------------------------
+- also, for tonight you meant I only prepare the rport part for th equestion2, not the code, since you said you will do all the code, right?
+
++ How u have done the report without the code? I mean how u generate the plots and R outpuit then?
+
+- I thought you said you finish the code then I should prepare the report
+
++ I mean I have done a tempalte so u can do the code easy and it also may help u in your report to do the code, but I can send a version to you so u can jsut change some part or add some more plots or rm them if needed. 
+
+I have push the code so u can check the plots and table that it geneate and just do a reposrt with points or do a draft version. U can see the question 3 of mine or question 1 as example
+
+
