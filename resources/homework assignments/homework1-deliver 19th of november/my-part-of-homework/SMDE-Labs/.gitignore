@@ -1,0 +1,16 @@
+# Results
+bodyPerformance_clean.csv
+R/logs/
+report/figures/
+report/tables/
+report-deprecated/figures/
+report-deprecated/tables/
+
+# Latex
+**/_build/
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+Rplots.pdf

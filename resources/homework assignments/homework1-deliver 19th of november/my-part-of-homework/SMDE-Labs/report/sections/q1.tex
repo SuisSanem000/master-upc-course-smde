@@ -1,0 +1,174 @@
+% ============================================================
+% 1. FIRST QUESTION
+% ============================================================
+\section{Visualisation, Chi-Square and t-Test}\label{sec:q1}
+
+% ------------------------------------------------------------
+% a)
+% ------------------------------------------------------------
+\subsection{Data Import and Variable Types}\label{sec:q1a}
+
+\task{Import the data set to R assigning the type of each variable correctly.}
+
+We imported the data set \texttt{bodyPerformance.csv} and renamed its columns to short R names without spaces or symbols (e.g.\ \texttt{body fat\_\%} becomes \texttt{body\_fat\_pct}).
+
+Then we gave each variable the type that matches its measurement scale:
+
+\begin{itemize}
+  \item \textbf{Nominal categorical:} \texttt{gender} is a factor, and we labeled its codes \texttt{F} and \texttt{M} as \texttt{Female} and \texttt{Male} respectively.
+  \item \textbf{Ordinal categorical:} \texttt{class} is an ordered factor with the levels $D < C < B < A$, from poor to excellent performance.
+  \item \textbf{Numerical:} the other ten variables (\texttt{age}, \texttt{height\_cm}, \texttt{weight\_kg}, \texttt{body\_fat\_pct}, \texttt{diastolic}, \texttt{systolic}, \texttt{grip\_force}, \texttt{sit\_bend\_cm}, \texttt{sit\_ups} and \texttt{broad\_jump\_cm}) are numeric.
+    \texttt{age} could be stored as an integer, but we kept it numeric for simplicity.
+\end{itemize}
+
+The result has 13,393 observations of 12 variables with no missing values (R output, Appendix~\ref{app:code}).
+The name, type and levels of each variable are listed in \autoref{tab:q1a-variables}.
+
+% ------------------------------------------------------------
+% b)
+% ------------------------------------------------------------
+\subsection{Descriptive Statistics}\label{sec:q1b}
+
+\task{Summarize the numerical variables and analyze their distributions.}
+
+The descriptive statistics of the cleaned numerical variables are presented in \autoref{tab:q1b-summary-clean}.
+\paragraph{Outliers.} 
+\autoref{tab:q1b-summary} summarizes the ten numerical variables of the original data set, and their boxplots (\autoref{fig:q1b-boxplots}) show values beyond $1.5 \times \mathrm{IQR}$ from the quartiles in every variable except \texttt{age} and \texttt{sit\_ups} (\autoref{tab:q1b-outliers}).
+We first examined the descriptive statistics (\autoref{tab:q1b-summary}) and boxplots (\autoref{fig:q1b-boxplots}) to identify potential outliers (\autoref{tab:q1b-outliers}).
+
+We then further evaluated the recorded values using established health reference ranges (\autoref{tab:q1b-reference}) and the characteristics of each measurement.
+Based on this analysis, we excluded observations with impossible or implausible values, including extreme blood pressure readings, body fat percentages, BMI values and invalid performance test measurements.
+The exclusion criteria and the number of affected observations are presented in \autoref{tab:q1b-removed}.
+In total, 651 observations (4.9\%) were removed, leaving 12,742 in \texttt{bodyPerformance\_clean.csv} for subsequent analyses.
+
+\paragraph{Distribution and normality.}
+The distributions of the cleaned numerical variables were examined using histograms (\autoref{fig:q1b-histograms}) and Q-Q plots (\autoref{fig:q1b-qqplots}).
+The findings are summarized in \autoref{tab:q1b-distributions}.
+The Q-Q plots (\autoref{fig:q1b-qqplots}) show deviations from normality, particularly in the tails, and the Shapiro-Wilk tests rejected normality for all variables ($p < 0.05$, \autoref{tab:q1b-shapiro}).
+However, based on the histograms (\autoref{fig:q1b-histograms}), several variables appear approximately bell-shaped, suggesting that a normal approximation may be reasonable for further statistical analysis.
+
+\begin{table}[htbp]
+\centering
+\caption{Distribution shapes of the cleaned numerical variables.}
+\label{tab:q1b-distributions}
+\small
+\begin{tabular}{ll}
+\toprule
+Variable & Distribution shape \\
+\midrule
+Age          & Right-skewed \\
+Height       & Approximately normal \\
+Weight       & Slightly right-skewed \\
+Body fat     & Approximately normal \\
+Diastolic    & Approximately normal \\
+Systolic     & Approximately normal \\
+Grip force   & Bimodal \\
+Sit and bend & Left-skewed \\
+Sit-ups      & Left-skewed \\
+Broad jump   & Slightly left-skewed \\
+\bottomrule
+\end{tabular}
+\end{table}
+\xfcomment{TODO: describe the shape of each variable with the histograms of the cleaned data (\autoref{fig:q1b-histograms}) and compare it with the mean and median of \autoref{tab:q1b-summary-clean}.}
+\xfcomment{TODO: check whether the two peaks of \texttt{grip\_force} (around 25 and 43) correspond to the two values of \texttt{gender} (Section~\ref{sec:q1g}).}
+\xfcomment{TODO: comment on the Q-Q plots of the cleaned data (\autoref{fig:q1b-qqplots}): which variables follow the line and which deviate in the tails.}
+\xfcomment{TODO: report the Shapiro-Wilk test on a random sample of 5,000 cleaned observations (\autoref{tab:q1b-shapiro}) and explain why, with this sample size, it rejects normality even for the variables that look normal in \autoref{fig:q1b-histograms}.}
+
+% ------------------------------------------------------------
+% c)
+% ------------------------------------------------------------
+\subsection{Blood Pressure by Gender}\label{sec:q1c}
+
+\task{Consider the variables of diastolic and systolic blood pressure.
+Eliminate the zero values and check their distributions for the gender groups using proper graph(s).
+Interpret your findings.}
+
+The zero blood pressure values were removed during data cleaning (Section~\ref{sec:q1b}).
+\autoref{tab:q1c-summary} summarizes the systolic and diastolic blood pressure measurements by gender.
+
+\paragraph{Systolic blood pressure.}
+Males have higher mean and median systolic blood pressure than females (\autoref{tab:q1c-summary}).
+The histograms (\autoref{fig:q1c-histograms}) show an approximately normal distribution for males and a right-skewed distribution for females. 
+The right-skewed female systolic distribution indicates that most female observations are concentrated at relatively lower blood pressure values, with fewer observations extending toward higher values. 
+The standard deviations are similar for both genders, indicating comparable variability.
+
+\paragraph{Diastolic blood pressure.}
+Males also have higher mean and median diastolic blood pressure than females.
+Both distributions are unimodal (males approximately normal, females right-skewed).
+The standard deviations are nearly identical, indicating similar variability between genders.
+
+\paragraph{Boxplots.}
+The boxplots (\autoref{fig:q1c-boxplots}) confirm higher median blood pressure values among males for both measurements.
+Several outliers are present, mostly at higher blood pressure values.
+
+\xfcomment{Discuss the differences in the distributions of \texttt{diastolic} and \texttt{systolic} between the two levels of \texttt{gender}, based on your graphs.}
+
+% ------------------------------------------------------------
+% d)
+% ------------------------------------------------------------
+\subsection{Confidence Intervals for Systolic Blood Pressure}\label{sec:q1d}
+
+\task{Construct 95\% confidence intervals for the mean systolic blood pressure of two gender groups and interpret them.}
+\paragraph{Confidence intervals.}
+The estimated means and 95\% confidence intervals for both genders are presented in \autoref{tab:q1d-t-test}.
+
+\paragraph{Hypothesis testing.}
+The true population mean systolic blood pressure is estimated to lie between the lower and upper confidence interval bounds for each gender.
+The p-values are below 0.05 for both one-sample t-tests.
+We therefore reject the null hypothesis that the population mean systolic blood pressure equals 120 mmHg for both genders.
+The confidence intervals do not overlap, suggesting that males have a higher population mean systolic blood pressure than females, consistent with Section~\ref{sec:q1c}.
+
+
+% ------------------------------------------------------------
+% e)
+% ------------------------------------------------------------
+\subsection{Age Groups}\label{sec:q1e}
+
+\task{Categorize the variable age into four categories cutting from the values 30, 40 and 50 and save it as a new variable into your data frame.}
+We categorized age into four groups using the cut-off values 30, 40 and 50, and saved the result as the new variable \texttt{age\_cat}.
+The frequencies and proportions are shown in \autoref{tab:q1e-age-groups} and \autoref{fig:q1e-age-groups}.
+
+The largest group consists of individuals younger than 30 (43.0\%), while the smallest group is aged 40--49 (14.0\%).
+The remaining individuals are distributed between ages 30--39 (20.0\%) and 50 or older (22.9\%).
+\xfcomment{TODO: comment on the size of each level of \texttt{age\_cat} (e.g.\ the largest and smallest groups).}
+
+% ------------------------------------------------------------
+% f)
+% ------------------------------------------------------------
+\subsection{Association of Age Groups with Class and Gender}\label{sec:q1f}
+
+\task{Analyze the association first between age groups and class and then between age groups and gender by using proper statistical method.}
+
+We used chi-square tests of independence to examine the associations between \texttt{age\_cat} and \texttt{class}, and between \texttt{age\_cat} and \texttt{gender}.
+The contingency tables are presented in \autoref{tab:q1f-age-class} and \autoref{tab:q1f-age-gender}, and the test results in \autoref{tab:q1f-chisq}.
+
+\paragraph{Age group and performance class.}
+The chi-square test indicates a statistically significant association between age group and performance class ($\chi^2(9) = 110.77$, $p < 10^{-16}$). We reject the null hypothesis of independence.
+The proportions (\autoref{fig:q1f-proportions}) show that older age groups have higher proportions of individuals in lower performance classes (C and D), while younger age groups have higher proportions in classes A and B.
+
+\paragraph{Age group and gender.}
+The chi-square test also indicates a statistically significant association between age group and gender ($\chi^2(3) = 188.42$, $p < 10^{-16}$). We reject the null hypothesis of independence.
+Males represent the majority in every age group, but their proportion is highest among individuals aged 30--39.
+The proportion of females is highest in the 50+ age group (\autoref{fig:q1f-proportions}).
+\xfcomment{TODO: state the hypotheses, check the assumption (expected counts $\geq 5$), report $\chi^2$, df and p-value, and conclude on the independence of \texttt{age\_cat} with \texttt{class} and with \texttt{gender}.}
+
+% ------------------------------------------------------------
+% g)
+% ------------------------------------------------------------
+\subsection{Physical Performance by Gender}\label{sec:q1g}
+
+\task{Test whether physical performance test results of the individuals are affected from the gender.
+Check the assumptions and visualize the relationship between these two characteristics.}
+
+We used two-sample t-tests to compare physical performance results between genders.
+The Shapiro-Wilk tests rejected normality for all variables (\autoref{tab:q1g-shapiro}). However, the large sample sizes make the t-tests reasonably robust to deviations from normality.
+Although the Shapiro-Wilk tests rejected normality for all variables (\autoref{tab:q1g-shapiro}), the distributions were identified as approximately normal based on the analysis in Section~\ref{sec:q1b}.
+The F-tests indicated unequal variances for grip strength, sit-and-bend flexibility and sit-ups, so Welch's t-test was used.
+For broad jump, Student's t-test was applied (\autoref{tab:q1g-f-test}).
+
+\paragraph{Statistical results.}
+All four t-tests showed statistically significant differences between genders ($p < 0.001$), so the null hypothesis of equal means was rejected for each variable (\autoref{tab:q1g-t-test}).
+Males achieved higher mean results in grip strength, sit-ups and broad jump, while females performed better in the sit-and-bend flexibility test. The mean differences were approximately 17.61 kg for grip strength, 13.85 repetitions for sit-ups, 57.91 cm for broad jump and 5.90 cm for flexibility.
+The density plots (\autoref{fig:q1g-distributions}) show clear differences between genders, particularly in grip strength and broad jump, where the distributions overlap relatively little.
+The boxplots (\autoref{fig:q1g-boxplots}) confirm higher median values for males in grip strength, sit-ups and broad jump, and for females in flexibility.
+\xfcomment{Summarize the assumption checks and discuss whether \texttt{grip\_force}, \texttt{sit\_bend\_cm}, \texttt{sit\_ups} and \texttt{broad\_jump\_cm} differ significantly by \texttt{gender}.}
