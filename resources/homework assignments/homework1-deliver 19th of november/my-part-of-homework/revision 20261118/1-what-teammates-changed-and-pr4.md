@@ -15,11 +15,13 @@ Right after the November 15 meeting, **Xiang** already applied the general forma
 
 ---
 
-## 2. Pull Request #4 (`q2` branch) — What Was Asked from You
+## 2. All Open Branches & Pull Requests Studied (`SMDE-Labs/.git`)
 
-At `21:52` on November 15, Xiang ran an AI review on each section and opened **PR #4** for you to review and apply if needed:
-- **Q1 (Tosia):** `https://github.com/xiangfengyepan/SMDE-Labs/pull/3`
-- **Q2 (You):** `https://github.com/xiangfengyepan/SMDE-Labs/pull/4`
+Inspecting `origin/main` and all remote branches inside `SMDE-Labs`:
+- **`main` (`7653417`, `rm TODO`):** Already includes the merged `q3` branch (`4a56bef`), `\showtodofalse`/`\showtaskfalse` (`ca09d1a`), and compact `11pt` spacing (`4451867`).
+- **`origin/q3` (`4a56bef`):** Already merged into `main`.
+- **`origin/q1` — PR #3 (`242dde6`, `Revise Q1 report text: numbers, consistency and wording`):** Tosia's open Q1 review branch (revises `report/sections/q1.tex`: outlier order, BMI note, Shapiro-Wilk details, CIs/p-values vs 120 mmHg, chi-square $H_0$/assumptions, F-test p-values, removing leftover `TODO`s). Left untouched because it belongs to Tosia.
+- **`origin/q2` — PR #4 (`30d6190`, `Revise Q2 report text: numbers and wording`):** Open PR assigned to you (`https://github.com/xiangfengyepan/SMDE-Labs/pull/4`).
 
 All three changes in **PR #4** (`report/sections/q2.tex`, commit `30d6190`) were checked against the generated Question 2 CSV tables (`q2a_summary_age.csv` and `q2c_posthoc.csv`) and are **100% accurate**:
 

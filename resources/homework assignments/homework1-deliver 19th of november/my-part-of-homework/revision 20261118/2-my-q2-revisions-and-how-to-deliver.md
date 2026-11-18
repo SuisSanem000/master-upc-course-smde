@@ -29,13 +29,20 @@ Only **1 file** was changed in `my-part-of-homework/SMDE-Labs/`: **`report/secti
 
 ---
 
-## 2. What to Tell Your Teammates in Tonight's 9:00 PM Meeting
+## 2. Repo Setup, `.gitignore` & Local-Only Workflow
 
-> *"I checked the `main` updates (the compact 12-page layout, hidden comments/tasks, and updated appendix captions) and reviewed PR #4 for Q2. I verified all three points against the R tables: the slight left skew in `broad_jump_cm` (median 8.62 cm above mean in `30-39`), the softer wording ('possible false positives'), and removing the double negatives plus adding the `30-39` to `40-49` slope reversal between men and women. Everything in Q2 is checked and ready to merge, and the compiled PDF builds cleanly within the 12-page limit."*
+- Both copies of `SMDE-Labs` (`teammates work till now/github repos/` and `my-part-of-homework/SMDE-Labs/`) are listed in root `.gitignore` and removed from the remote `origin/main` server (`SuisSanem000/master-upc-course-smde`), with all nested `.git` directories removed.
+- A clean copy of latest `SMDE-Labs` (`main` at `7653417`) was committed **locally only** in `my-part-of-homework/SMDE-Labs/`, and the verified PR #4 edits in `report/sections/q2.tex` (`30d6190`) are left **uncommitted** so you can inspect them directly in Source Control / `git diff`.
 
 ---
 
-## 3. Two Easy Ways to Deliver This to Your Team's GitHub Repo
+## 3. What to Say in WhatsApp (Since Tonight's Meeting Is Canceled)
+
+> *"I checked the `main` updates (`7653417`) and reviewed PR #4 (`30d6190`) for Q2 against the R tables (`q2a_summary_age.csv` and `q2c_posthoc.csv`). I verified all three points: the slight left skew in `broad_jump_cm` (median 8.62 cm above mean in `30-39`), 'possible false positives' in conclusions, and removing the double negatives plus adding the `30-39` to `40-49` slope reversal between men and women. Everything in Q2 is ready and builds cleanly inside the 12-page limit (body ends on page 11)."*
+
+---
+
+## 4. Two Easy Ways to Deliver This to Your Team's GitHub Repo
 
 Since only `report/sections/q2.tex` changed and those exact edits are already in PR #4:
 
@@ -45,4 +52,4 @@ Since only `report/sections/q2.tex` changed and those exact edits are already in
 
 - **Option B — Copy, commit, and push from your local `SMDE-Labs` repo:**
   1. Copy `my-part-of-homework/SMDE-Labs/report/sections/q2.tex` over `report/sections/q2.tex` in your local `SMDE-Labs` repo.
-  2. Pull latest `main`, then commit and push `report/sections/q2.tex`.
+  2. Pull latest `main`, then commit and push `report/sections/q2.tex` (Xiang will review pushes before 10:00 PM tonight).

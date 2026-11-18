@@ -46,7 +46,8 @@ _build/
 *.toc
 ociamthesismain.pdf
 
-# Teammates' external GitHub repos folder (kept local only)
+# Teammates' and local homework SMDE-Labs repo copies (kept local only)
 resources/homework assignments/homework1-deliver 19th of november/teammates work till now/github repos/
+resources/homework assignments/homework1-deliver 19th of november/my-part-of-homework/SMDE-Labs/
 
 
