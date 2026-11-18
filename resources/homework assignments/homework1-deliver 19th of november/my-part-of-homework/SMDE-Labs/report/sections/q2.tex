@@ -28,7 +28,7 @@ The distribution of \texttt{diastolic} is nearly identical across all four class
 In contrast, both \texttt{sit\_ups} and \texttt{broad\_jump\_cm} increase steadily from \texttt{D} to \texttt{A} (from 30.67 to 47.91 for \texttt{sit\_ups}, and from 176.56 to 203.01\,cm for \texttt{broad\_jump\_cm}).
 
 \paragraph{Shape and spread.}
-In every group of both factors, the mean and the median are very close (\autoref{tab:q2a-summary-age} and \autoref{tab:q2a-summary-class}), indicating approximately symmetric distributions within each group.
+In most groups the mean and the median are close (\autoref{tab:q2a-summary-age} and \autoref{tab:q2a-summary-class}), indicating approximately symmetric distributions, except for \texttt{broad\_jump\_cm}, whose median is up to 8.62\,cm above the mean (\texttt{30-39}), a slight left skew.
 The standard deviations are also similar across groups, with the ratio between the largest and smallest group variances remaining below 2 in all cases (\autoref{tab:q2b-assumptions}, column \texttt{Var\_ratio}, at most 1.86 for \texttt{sit\_ups} by \texttt{class}).
 
 % ------------------------------------------------------------
@@ -74,7 +74,7 @@ The three post-hoc methods disagree at the $\alpha = 0.05$ threshold in only two
 
 \paragraph{Conclusions.}
 Both \texttt{age\_cat} and \texttt{class} have a statistically significant effect on all four variables, with the largest effects on \texttt{sit\_ups} and \texttt{broad\_jump\_cm}, a moderate effect on \texttt{body\_fat\_pct}, and a very small effect on \texttt{diastolic}.
-Controlling for multiple comparisons with Tukey HSD and Bonferroni avoids the false positives of unadjusted LSD on the small differences between \texttt{<30} and \texttt{30-39} for \texttt{body\_fat\_pct} and between classes \texttt{A} and \texttt{C} for \texttt{diastolic}.
+Controlling for multiple comparisons with Tukey HSD and Bonferroni avoids the possible false positives of unadjusted LSD on the small differences between \texttt{<30} and \texttt{30-39} for \texttt{body\_fat\_pct} and between classes \texttt{A} and \texttt{C} for \texttt{diastolic}.
 
 % ------------------------------------------------------------
 % c)
@@ -106,5 +106,5 @@ In every age group, men have higher means than women in both \texttt{sit\_ups} a
 Within each gender, all 6 pairs of age groups differ significantly at a 95\% confidence level according to Tukey HSD, Bonferroni and LSD for both \texttt{sit\_ups} and \texttt{broad\_jump\_cm} (\autoref{tab:q2c-posthoc}).
 
 The interaction appears primarily between \texttt{<30} and \texttt{30-39}, where the lines in \autoref{fig:q2c-interaction} are less parallel because the decline from \texttt{<30} to \texttt{30-39} is steeper for women than for men.
-Specifically, from \texttt{<30} to \texttt{30-39}, the mean of \texttt{sit\_ups} drops by $-6.15$ in women against $-2.62$ in men, and the mean of \texttt{broad\_jump\_cm} drops by $-8.55$\,cm in women against only $-2.59$\,cm in men (\autoref{tab:q2c-posthoc}).
-After age 40, the lines of both genders decrease with similar slopes down to \texttt{50+}.
+Specifically, from \texttt{<30} to \texttt{30-39}, the mean of \texttt{sit\_ups} drops by 6.15 in women against 2.62 in men, and the mean of \texttt{broad\_jump\_cm} drops by 8.55\,cm in women against only 2.59\,cm in men (\autoref{tab:q2c-posthoc}).
+From \texttt{30-39} to \texttt{40-49} the pattern reverses, with a steeper decline for men (6.70 against 4.26 in \texttt{sit\_ups} and 12.10 against 8.18\,cm in \texttt{broad\_jump\_cm}), while from \texttt{40-49} to \texttt{50+} the lines of both genders decrease with similar slopes.
