@@ -1,0 +1,183 @@
+% ============================================================
+% 3. THIRD QUESTION
+% ============================================================
+\section{Regression Analysis}\label{sec:q3}
+
+% ------------------------------------------------------------
+% a)
+% ------------------------------------------------------------
+\subsection{Best Simple Linear Regression Model}\label{sec:q3a}
+
+\task{Create a data frame considering only the variables: body fat, grip force, sit ups counts, gender and age categories.
+Consider the numerical variables in the data set and find the best simple linear regression model to predict the broad jump variable.
+Test the assumptions and use transformations if it is required.
+Explain why the model you find is the best simple linear regression model and interpret the model coefficients.}
+
+\paragraph{Data.}
+We created the data frame \texttt{q3} with the response \texttt{broad\_jump\_cm} and the five variables of the task (\texttt{body\_fat\_pct}, \texttt{grip\_force}, \texttt{sit\_ups}, \texttt{gender} and \texttt{age\_cat}), from the 12,742 observations of the cleaned data set (Section~\ref{sec:q1b}) and with the age groups of Section~\ref{sec:q1e}.
+
+\paragraph{Best simple model.}
+Among the three numerical variables, \texttt{grip\_force} has the strongest correlation with \texttt{broad\_jump\_cm} ($r = 0.751$), closely followed by \texttt{sit\_ups} ($r = 0.743$), both strong and positive, while \texttt{body\_fat\_pct} has a moderate negative correlation ($r = -0.677$) (\autoref{tab:q3a-correlation}).
+\texttt{grip\_force} gives the model with the highest $R^2$ and the smallest residual standard error of the three (\autoref{tab:q3a-slr} and \autoref{fig:q3a-scatter}).
+It explains 56.4\% of the variability of \texttt{broad\_jump\_cm}, with a typical error of 25.73\,cm.
+Therefore, \texttt{grip\_force} is the numerical variable that gives the best simple linear regression model, \texttt{broad\_jump\_cm} $\sim$ \texttt{grip\_force}.
+
+\paragraph{Assumptions.}
+We first checked the assumptions of the simple linear regression on this model without any transformation (\autoref{tab:q3a-assumptions}, row \texttt{Original}):
+\begin{enumerate}
+  \item \textbf{Linearity:} the scatter plot shows a linear trend between \texttt{grip\_force} and \texttt{broad\_jump\_cm} (\autoref{fig:q3a-scatter}).
+  \item \textbf{Normality of the error term:} the Shapiro-Wilk test on a random sample of 5,000 residuals rejects normality at a 95\% confidence level ($p = 2.19 \times 10^{-13} < 0.05$), but the Q-Q plot follows the line except in the tails (\autoref{fig:q3a-diagnostics}, right), and with this sample size the test detects even very small deviations.
+  \item \textbf{Homoscedasticity:} the Breusch-Pagan test rejects homoscedasticity at a 95\% confidence level ($p = 9.41 \times 10^{-6} < 0.05$; residuals against fitted values in \autoref{fig:q3a-diagnostics}, left).
+  \item \textbf{Independence of the error term:} the Durbin-Watson test does not reject the absence of autocorrelation at a 95\% confidence level ($p = 0.468 > 0.05$).
+\end{enumerate}
+
+\paragraph{Box-Cox transformation.}
+Since homoscedasticity does not hold, we applied the Box-Cox transformation to \texttt{broad\_jump\_cm} ($\lambda = 1.46$, \autoref{fig:q3a-boxcox}).
+With the transformed response, the Breusch-Pagan test still rejects homoscedasticity at a 95\% confidence level ($p = 2.67 \times 10^{-5} < 0.05$), and the other assumptions do not change (\autoref{tab:q3a-assumptions}, row \texttt{Box-Cox}).
+Since the transformation does not solve the heteroscedasticity, we kept the model without transformation.
+In its residual plot the spread looks constant (\autoref{fig:q3a-diagnostics}, left), so the heteroscedasticity detected by the test is small.
+The 633 outliers (5.0\%) are about the 5\% expected under normality, so we kept them.
+
+\paragraph{Interpretation.}
+The fitted model (\autoref{tab:q3a-slr}) is
+\[
+  \texttt{broad\_jump\_cm} = 87.97 + 2.777\,\texttt{grip\_force}.
+\]
+The t-test of the slope shows that \texttt{grip\_force} has a significant positive linear effect on \texttt{broad\_jump\_cm} at a 95\% confidence level (R output, Appendix~\ref{app:code}).
+1\,kg more of \texttt{grip\_force} increases the predicted \texttt{broad\_jump\_cm} by 2.78\,cm.
+The intercept has no practical meaning, since the smallest \texttt{grip\_force} in the data is 4.4\,kg (\autoref{tab:q1b-summary-clean}).
+
+% ------------------------------------------------------------
+% b)
+% ------------------------------------------------------------
+\subsection{Multiple Linear Regression Model}\label{sec:q3b}
+
+\task{Fit a multiple linear regression model with the most important two (numerical) variables.
+Use transformations if it is needed and test all the assumptions.
+Then compare this model to the simple linear regression model that you fit in (a).
+Which one is a better model?
+Why?}
+
+\paragraph{Multiple linear regression model.}
+Among the three models with two numerical predictors, the model with \texttt{grip\_force} and \texttt{sit\_ups} has the highest adjusted $R^2$ (\autoref{tab:q3b-selection}).
+Therefore, \texttt{grip\_force} and \texttt{sit\_ups} are the two most important numerical variables, and the fitted model is
+\[
+  \texttt{broad\_jump\_cm} = 72.64 + 1.790\,\texttt{grip\_force} + 1.297\,\texttt{sit\_ups}.
+\]
+The t-tests show that both predictors have a significant positive linear effect on \texttt{broad\_jump\_cm} at a 95\% confidence level (R output, Appendix~\ref{app:code}).
+Keeping \texttt{sit\_ups} constant, 1\,kg more of \texttt{grip\_force} increases the predicted \texttt{broad\_jump\_cm} by 1.79\,cm, and keeping \texttt{grip\_force} constant, one more sit-up increases it by 1.30\,cm.
+
+\paragraph{Assumptions.}
+We checked the assumptions of the multiple linear regression on this model without any transformation (\autoref{tab:q3b-assumptions}):
+\begin{enumerate}
+  \item \textbf{Linearity:} the scatter plots show a linear trend between \texttt{broad\_jump\_cm} and each predictor (\autoref{fig:q3b-pairs}), and the residuals stay around 0 for all the fitted values, with only a slight bend at the highest fitted values, above 250\,cm (\autoref{fig:q3b-diagnostics}, left).
+  \item \textbf{Normality of the error term:} the Shapiro-Wilk test rejects normality at a 95\% confidence level ($p < 10^{-16} < 0.05$), but the Q-Q plot follows the line except in the tails (\autoref{fig:q3b-diagnostics}, right).
+  \item \textbf{Homoscedasticity:} the Breusch-Pagan test does not reject homoscedasticity at a 95\% confidence level ($p = 0.517 > 0.05$), and the residuals form a band of constant width around 0 (\autoref{fig:q3b-diagnostics}, left).
+  \item \textbf{Independence of the error term:} the Durbin-Watson test does not reject the absence of autocorrelation at a 95\% confidence level ($p = 0.802 > 0.05$).
+  \item \textbf{No multicollinearity:} \texttt{grip\_force} and \texttt{sit\_ups} are only moderately correlated ($r = 0.573$, \autoref{fig:q3b-pairs}), and their VIF is 1.49, far below 10.
+\end{enumerate}
+Since all the assumptions hold except normality, we did not transform the response.
+The 614 outliers (4.8\%) are about the 5\% expected under normality, so we kept them.
+
+\paragraph{Comparison with (a).}
+We compared this model with the simple model of (a), both without transformation.
+Adding \texttt{sit\_ups} increases the adjusted $R^2$ from 0.564 to 0.710 and reduces the residual standard error from 25.73 to 20.99\,cm, and the partial F-test shows that this improvement is significant at a 95\% confidence level ($p < 10^{-16} < 0.05$, \autoref{tab:q3b-comparison}).
+In \autoref{fig:q3b-vs-a} the points of (b) are closer to the line $y = x$.
+Therefore the multiple model of (b) is better: it explains 71.0\% of the variability of \texttt{broad\_jump\_cm}, against 56.4\% in (a), with smaller errors and without any transformation.
+
+% ------------------------------------------------------------
+% c)
+% ------------------------------------------------------------
+\subsection{Models with a Factor}\label{sec:q3c}
+
+\task{Now we will add a factor to the regression model you have chosen in section (b).
+(i) First, add age categories (age\_cat) as a factor.
+Interpret the model coefficients and overall summary of the model.
+(ii) Add gender to the model that you had chosen in the previous step in (b).
+Interpret the model coefficients and overall summary of this model similar to the previous case.}
+
+
+\subsubsection{Model with Age Categories}\label{sec:q3c-age}
+
+The fitted model with \texttt{age\_cat} (reference category \texttt{<30}, \autoref{tab:q3c-age-coef}) is
+\begin{align*}
+  \texttt{broad\_jump\_cm} = {}& 83.48 + 1.859\,\texttt{grip\_force} + 1.063\,\texttt{sit\_ups} \\
+  & - 1.965\,\texttt{age\_cat30-39} - 4.052\,\texttt{age\_cat40-49} \\
+  & - 13.399\,\texttt{age\_cat50+}.
+\end{align*}
+
+All the coefficients are significant at a 95\% confidence level.
+Keeping \texttt{grip\_force} and \texttt{sit\_ups} constant, people aged 30--39 jump 1.97\,cm less than those under 30, people aged 40--49 4.05\,cm less, and people aged 50 or more 13.40\,cm less.
+So the jump distance decreases with age, much more from the age of 50 (\autoref{fig:q3c-categories}, top).
+Keeping \texttt{sit\_ups} and \texttt{age\_cat} constant, 1\,kg more of \texttt{grip\_force} increases the predicted \texttt{broad\_jump\_cm} by 1.86\,cm, and keeping \texttt{grip\_force} and \texttt{age\_cat} constant, one more sit-up increases it by 1.06\,cm.
+
+
+The model is significant at a 95\% confidence level (overall F-test, $p < 10^{-16} < 0.05$; R output, Appendix~\ref{app:code}).
+It explains 72.3\% of the variability of \texttt{broad\_jump\_cm}, with a residual standard error of 20.52\,cm (\autoref{tab:q3c-summary}).
+
+\subsubsection{Model with Gender}\label{sec:q3c-gender}
+
+The fitted model with \texttt{gender} (reference category \texttt{Female}, \autoref{tab:q3c-gender-coef}) is
+\begin{align*}
+  \texttt{broad\_jump\_cm} = {}& 89.76 + 0.943\,\texttt{grip\_force} + 1.278\,\texttt{sit\_ups} \\
+  & + 23.608\,\texttt{genderMale}.
+\end{align*}
+
+All the coefficients are significant at a 95\% confidence level.
+Keeping \texttt{grip\_force} and \texttt{sit\_ups} constant, men jump 23.61\,cm further than women.
+So men perform better than women in the broad jump (\autoref{fig:q3c-categories}, bottom).
+Keeping \texttt{sit\_ups} and \texttt{gender} constant, 1\,kg more of \texttt{grip\_force} increases the predicted \texttt{broad\_jump\_cm} by 0.94\,cm, and keeping \texttt{grip\_force} and \texttt{gender} constant, one more sit-up increases it by 1.28\,cm.
+
+The model is significant at a 95\% confidence level (overall F-test, $p < 10^{-16} < 0.05$; R output, Appendix~\ref{app:code}).
+It explains 74.0\% of the variability of \texttt{broad\_jump\_cm}, with a residual standard error of 19.87\,cm (\autoref{tab:q3c-summary}).
+
+% ------------------------------------------------------------
+% d)
+% ------------------------------------------------------------
+\subsection{Model Comparison}\label{sec:q3d}
+
+\task{Compare the model in section (b) with the two models that had constructed with an additional factor in (c).
+Which one would you choose?
+Why?}
+
+\paragraph{Comparison.}
+We compared the model of (b) with the two models of (c) by the partial F-test of each factor against the model of (b), the residual standard error and the adjusted $R^2$, which takes into account that the models have different numbers of coefficients (\autoref{tab:q3d-comparison}).
+Both factors improve the model of (b) significantly at a 95\% confidence level (partial F-tests, $p < 10^{-16} < 0.05$).
+Between adding \texttt{gender} or \texttt{age\_cat}, \texttt{gender} gives the largest improvement, with only one coefficient more instead of the three of \texttt{age\_cat}.
+
+Visually, the difference between the three models is hardly noticeable in \autoref{fig:q3d-fit}, but it is clear in their adjusted $R^2$ and residual standard errors in \autoref{tab:q3d-comparison}.
+
+\csvtable[\scriptsize]{q3d_comparison}
+  {d) Comparison of the model of b) with the two models of c); partial F-test of each factor against the model of b).}
+  {tab:q3d-comparison}
+
+\paragraph{Choice.}
+We choose the model of (b) with \texttt{gender} (Section~\ref{sec:q3c-gender}) since it has the highest adjusted $R^2$ and the smallest error, and it improves the model of (b) significantly with only one coefficient more.
+
+% ------------------------------------------------------------
+% e)
+% ------------------------------------------------------------
+\subsection{Validity of the Final Model}\label{sec:q3e}
+
+\task{Test the validity of the final model that you choose.}
+
+\paragraph{Assumptions.}
+We checked the assumptions of the final model, the model of (b) with \texttt{gender} (Section~\ref{sec:q3c-gender}), on its residuals (\autoref{tab:q3e-validity} and \autoref{fig:q3e-residuals}):
+\begin{enumerate}
+  \item \textbf{Linearity:} the residuals stay around 0 for all the fitted values (\autoref{fig:q3e-residuals}, top left).
+  \item \textbf{Normality of the error term:} the Shapiro-Wilk test rejects normality at a 95\% confidence level ($p < 10^{-16} < 0.05$), but the histogram and the Q-Q plot are close to normal except in the tails, especially the lower one, which gives the histogram a slight left skew (\autoref{fig:q3e-residuals}, top right and bottom left).
+  \item \textbf{Homoscedasticity:} the Breusch-Pagan test rejects homoscedasticity at a 95\% confidence level ($p = 1.11 \times 10^{-14} < 0.05$).
+    The Levene test shows that the variance of the residuals is different for women and men ($p = 2.76 \times 10^{-9} < 0.05$): the residuals of men are more spread, with a standard deviation of 20.5\,cm against 18.6\,cm for women (\autoref{fig:q3e-residuals}, bottom right).
+  \item \textbf{Independence of the error term:} the Durbin-Watson test does not reject the absence of autocorrelation at a 95\% confidence level ($p = 0.686 > 0.05$).
+  \item \textbf{No multicollinearity:} the largest VIF of the predictors is 3.23, below 10.
+\end{enumerate}
+The 591 outliers (4.6\%) are about the 5\% expected under normality, so we kept them.
+
+\paragraph{Robustness.}
+Because of the heteroscedasticity, we also computed the standard errors of the coefficients without assuming homoscedasticity (\autoref{tab:q3e-robust}).
+They are only slightly larger than the usual ones, and every coefficient is still significant at a 95\% confidence level ($p < 10^{-16} < 0.05$).
+
+\paragraph{Conclusion.}
+We conclude that the final model is valid: the relation is linear, the errors are independent, the predictors are not collinear and the residuals are close to normal.
+Despite the heteroscedasticity, the coefficients remain significant at a 95\% confidence level with heteroscedasticity-robust standard errors.
+
