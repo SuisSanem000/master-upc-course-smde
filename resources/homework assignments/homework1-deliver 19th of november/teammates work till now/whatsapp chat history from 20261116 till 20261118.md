@@ -26,3 +26,13 @@ I have a work meeting from 8 to 9. thanks
 [12:26, 11/18/2026] Simin: @Tosia Miri Uni Smde
 [13:23, 11/18/2026] Simin: also, I am very sorry to change plans last minute, I saw my work scheduled a meeting for me at exact time
 ----------------------------------------------------------------------
+
+[18/11/2026, 13:57:20] Xiang Miri Uni Smde: I maybe can not join the meeting today, if you see any thing in my Q3 part you send it to me.
+[18/11/2026, 13:57:41] Xiang Miri Uni Smde: Just make sure to check this
+[18/11/2026, 13:59:05] Xiang Miri Uni Smde: I will do a final check on Thursday and we can send it like around 8pm
+[18/11/2026, 13:59:45] Xiang Miri Uni Smde: Also if you push any changes tonight I will also review it before 10pm
+[18/11/2026, 13:59:54] Tosia Miri Uni Smde: ok i’ll do the check today than and if you have anything to q1 just text here
+[18/11/2026, 14:02:35] Xiang Miri Uni Smde: Check the <https://github.com/xiangfengyepan/SMDE-Labs/pull/3>
+
+I have made change to your code since some tables was not auto generated so it may change some number.
+[18/11/2026, 14:03:43] Xiang Miri Uni Smde: About the GPSS simulator it us mostly working. Just follow the README.md for the setup for tomorrow that we will start on the experiments
